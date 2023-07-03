@@ -1,0 +1,72 @@
+.input-post-from-user {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-post-from-user label {
+  font-weight: bold;
+}
+
+.input-post-from-user input,
+.input-post-from-user textarea {
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.input-post-from-user textarea {
+  resize: vertical;
+}
+
+.input-post-from-user button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.avatar-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.name-image {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.post {
+  width: 90vw;
+  border: 1px solid lightblue;
+
+  margin: 1rem auto;
+}
+.content {
+  padding: 22px;
+}
+.con-come {
+  border: 1px dashed;
+}
+.con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.edit-del {
+  display: flex;
+  gap: 20px;
+}
+.edit-del i:hover {
+  cursor: pointer;
+}
+
+/* Responsive CSS */
+@media (max-width: 768px) {
+  .input-post-from-user {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

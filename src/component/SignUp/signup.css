@@ -1,0 +1,34 @@
+.sign-up {
+  /* background-image: url(https://elements-video-cover-images-0.imgix.net/files/220512242/Preview.jpg?auto=compress&crop=edges&fit=crop&fm=jpeg&h=800&w=1200&s=3702b1eeb3ed39c89cbef83a0ec2e371);
+  background-repeat: no-repeat;
+  background-size: cover; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh;
+  margin: 0.5rem auto;
+}
+
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 600px;
+  padding: 30px;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+  .sign-up-form {
+    min-width: 400px;
+  }
+}
+@media screen and (max-width: 520px) {
+  .sign-up-form {
+    min-width: auto;
+  }
+}

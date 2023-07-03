@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "name": "a",
+      "password": "123456789",
+      "passwordR": "123456789",
+      "email": "abdhar95@yahoo.com",
+      "imageUrl": "https://th.bing.com/th/id/OIP.x7X2oAehk5M9IvGwO_K0PgAAAA?pid=ImgDet&rs=1",
+      "id": 1
+    },
+    {
+      "name": "a",
+      "password": "123456789",
+      "passwordR": "123456789",
+      "email": "a",
+      "imageUrl": "https://th.bing.com/th/id/OIP.x7X2oAehk5M9IvGwO_K0PgAAAA?pid=ImgDet&rs=1",
+      "id": 2
+    }
+  ],
+  "PostsComments": []
+}

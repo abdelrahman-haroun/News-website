@@ -1,0 +1,68 @@
+.card {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.con-news {
+  width: 90vw;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.image-articles img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.meta-info {
+  display: flex;
+  justify-content: space-between;
+  color: #888;
+  font-size: 14px;
+}
+
+.title {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.description {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.content {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+@media screen and (max-width: 950px) {
+  .meta-info {
+    font-size: 12px;
+  }
+  .con-news {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .card {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .meta-info {
+    font-size: 10px;
+  }
+  .con-news {
+    width: 100vw;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
