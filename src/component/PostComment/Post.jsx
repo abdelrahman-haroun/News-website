@@ -5,42 +5,62 @@ import AddComment from "./AddComment";
 export default function Post({ value }) {
   const [dataPost, setDataPost] = useState([]);
   const [del, setDel] = useState(0);
-  const [isedit, setIsedit] = useState(false);
-  const [ed, setEd] = useState(0);
   const [editPostNew, setEditPostNew] = useState("");
   const [postIdEdit, setPostIdEdit] = useState();
+  const [editStates, setEditStates] = useState({});
 
-  //
   useEffect(() => {
     axios
       .get(`http://localhost:3001/PostsComments`)
       .then((res) => setDataPost(res.data));
-  }, [value, del, ed]);
-  //
+  }, [value, del]);
+
   function deletePost(postId) {
-    // console.log(postId);
-    axios.delete(`http://localhost:3001/PostsComments/${postId}`);
-    setDel(del + 1);
+    axios
+      .delete(`http://localhost:3001/PostsComments/${postId}`)
+      .then(() => {
+        console.log("Post deleted successfully");
+        setDel(del + 1);
+      })
+      .catch((error) => {
+        console.error("Error deleting post", error);
+      });
   }
-  //
+
   function handelDel(postId) {
     deletePost(postId);
   }
 
   function handelEdit(postId) {
-    setIsedit(true);
+    setEditStates((prevState) => ({
+      ...prevState,
+      [postId]: true,
+    }));
     setPostIdEdit(postId);
   }
+
   function handelNewEdit() {
-    dataPost.map((el) => {
+    dataPost.forEach((el) => {
       if (el.id === postIdEdit) {
         el.des = editPostNew;
       }
     });
-    // console.log(dataPost);
-    axios.put(`http://localhost:3001/PostsComments/${postIdEdit}`, dataPost[0]);
-    setEd(ed + 1);
-    setIsedit(false);
+
+    axios
+      .put(
+        `http://localhost:3001/PostsComments/${postIdEdit}`,
+        dataPost[postIdEdit - 1]
+      )
+      .then(() => {
+        console.log("Post edited successfully");
+        setEditStates((prevState) => ({
+          ...prevState,
+          [postIdEdit]: false,
+        }));
+      })
+      .catch((error) => {
+        console.error("Error editing post", error);
+      });
   }
 
   const postes = dataPost.map((el) => {
@@ -49,7 +69,11 @@ export default function Post({ value }) {
         <div className="content">
           <div className="con">
             <div className="name-image">
-              <img className="avatar-image" src={el.imageUrl} />
+              <img
+                className="avatar-image"
+                src={el.imageUrl}
+                alt="User Avatar"
+              />
               <p className="user-post">{el.name}</p>
             </div>
             {sessionStorage.getItem("id") == el.idUser && (
@@ -65,15 +89,27 @@ export default function Post({ value }) {
               </div>
             )}
 
-            {isedit && (
+            {editStates[el.id] ? (
               <>
                 <input
-                  placeholder="edit post "
+                  placeholder="edit post"
+                  value={editPostNew}
                   onChange={(e) => setEditPostNew(e.target.value)}
                 />
                 <button onClick={handelNewEdit}>confirm</button>
-                <button onClick={() => setIsedit(false)}>cancel</button>
+                <button
+                  onClick={() =>
+                    setEditStates((prevState) => ({
+                      ...prevState,
+                      [el.id]: false,
+                    }))
+                  }
+                >
+                  cancel
+                </button>
               </>
+            ) : (
+              <></>
             )}
           </div>
 
@@ -85,13 +121,10 @@ export default function Post({ value }) {
             <p>{el.des}</p>
           </div>
         </div>
-        <AddComment idPost={el.id} />
+        <AddComment idPost={el.id} length={el.comments.length} />
       </div>
     );
   });
-  return (
-    <>
-      <div className="post-container">{postes}</div>
-    </>
-  );
+
+  return <div className="post-container">{postes}</div>;
 }

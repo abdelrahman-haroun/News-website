@@ -36,7 +36,13 @@ a {
   align-items: center;
   justify-content: space-between;
 }
-
+.fa-person-through-window::after {
+  content: "Sign In";
+}
+.fa-arrow-right-to-bracket,
+.fa-person-through-window {
+  transition: 1s;
+}
 .header-right p {
   margin-left: 10px;
   font-size: 18px;

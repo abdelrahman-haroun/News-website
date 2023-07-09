@@ -5,7 +5,7 @@ export default function Footer() {
     <div className="main-footer">
       <div className="footer">
         <div className="copy-right">
-          <p>CopyRight by News</p>
+          <p>CopyRight by Haroun</p>
         </div>
         <div className="social-links">
           <i className="fa-brands fa-facebook fa-xl" />

@@ -8,6 +8,7 @@ import {
   Landing,
   Footer,
 } from "./component/index";
+import ViewNews from "./component/News/ViewNews";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/ShowNews" element={<ShowNews />} />
+        <Route path="/ViewNews/:index" element={<ViewNews />} />
         <Route path="/SignUP" element={<SignUp />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/ShowPost" element={<ShowPostComment />} />

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Comment from "./Comment";
 import axios from "axios";
 
-export default function AddComment({ idPost }) {
+export default function AddComment({ idPost, length }) {
   const [comment, setComment] = useState("");
   const [user, setUser] = useState({});
   const userId = sessionStorage.getItem("id");
@@ -12,6 +12,7 @@ export default function AddComment({ idPost }) {
     imageUrl: "",
     time: "",
   });
+  const [len, setLen] = useState(length);
   //
   const fetchData = async () => {
     await axios
@@ -25,7 +26,8 @@ export default function AddComment({ idPost }) {
       .then(
         (res) => (
           (res.data.comments = [...res.data.comments, commentDone]),
-          axios.put(`http://localhost:3001/PostsComments/${idPost}`, res.data)
+          axios.put(`http://localhost:3001/PostsComments/${idPost}`, res.data),
+          setLen(res.data.comments.length)
         )
       );
   };
@@ -50,6 +52,7 @@ export default function AddComment({ idPost }) {
     });
   }
   //
+
   return (
     <div className="extra content">
       <div className="input-post-from-user">
@@ -64,6 +67,10 @@ export default function AddComment({ idPost }) {
         />
         <button onClick={handelClick}>Add Comment</button>
       </div>
+      <p style={{ paddingLeft: "25px" }}>
+        <i className="fa-regular fa-comment fa-xl"></i>
+        {len}
+      </p>
       <Comment id={idPost} com={commentDone} />
     </div>
   );

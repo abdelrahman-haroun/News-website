@@ -6,6 +6,7 @@ const AboutUs = () => {
     <section className="about-us">
       <div className="about-us-content">
         <h2 className="about-us-title">About Us</h2>
+
         <p className="about-us-description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
           fringilla tincidunt ante, sed efficitur sapien lobortis quis. Donec

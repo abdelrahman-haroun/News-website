@@ -62,7 +62,7 @@ const Header = () => {
           <span style={{ display: "flex", alignItems: "center" }}>
             {userId === null && (
               <Link rel="stylesheet" to="/SignIn">
-                <i className="fa-solid fa-arrow-right-to-bracket fa-xl" />
+                <i className="fa-arrow-right-to-bracket fa-xl fa-solid" />
               </Link>
             )}
             {userId !== null && (

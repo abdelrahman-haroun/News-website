@@ -3,6 +3,7 @@ import News from "./News";
 
 export default function ShowNews() {
   const [userSearch, setUserSearch] = useState("");
+  const [press, setPress] = useState(false);
 
   return (
     <>
@@ -15,22 +16,18 @@ export default function ShowNews() {
           justifyContent: "center",
         }}
       >
-        <div style={{ border: "1px solid #333" }}>
+        <form id="demo-2">
           <input
-            style={{ border: "none", outline: "none" }}
-            type="text"
-            name="search"
+            type="search"
             placeholder="search"
             onChange={(e) => {
               setUserSearch(e.target.value);
             }}
           />
-          <i className="fa-solid fa-magnifying-glass" />
-        </div>
+        </form>
       </div>
-      <div className="con-news" style={{ minHeight: "80vh" }}>
-        <News search={userSearch} />
-      </div>
+
+      <News search={userSearch} />
     </>
   );
 }
